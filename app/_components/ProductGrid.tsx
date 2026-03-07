@@ -1,7 +1,12 @@
-// app/components/ProductGrid.tsx
-export default function ProductGrid({ fragrances }: { fragrances: any[] }) {
+export default function ProductGrid({ 
+  fragrances, 
+  activeFilter 
+}: { 
+  fragrances: any[];
+  activeFilter?: string; // <-- This tells TypeScript it's okay to pass this prop!
+}) {
   return (
-    <section id="vault" className="px-8 pb-24 max-w-7xl mx-auto">
+    <section id="vault" className="px-8 pb-24 max-w-7xl mx-auto pt-12">
       <div className="flex items-center justify-between mb-10">
         <h2 className="text-2xl font-serif text-white">The Vault</h2>
         <span className="text-sm text-neutral-500 uppercase tracking-widest">Latest Drops</span>
