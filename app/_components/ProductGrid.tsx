@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 export default function ProductGrid({ 
   fragrances, 
   activeFilter 
 }: { 
   fragrances: any[];
-  activeFilter?: string; // <-- This tells TypeScript it's okay to pass this prop!
+  activeFilter?: string; 
 }) {
   return (
     <section id="vault" className="px-8 pb-24 max-w-7xl mx-auto pt-12">
@@ -21,11 +23,11 @@ export default function ProductGrid({
             : [];
 
           return (
-            <div 
-              // Using Name + index as a fallback key since your data doesn't have an "id" field
-              key={`${frag.Name}-${index}`} 
-              className="group relative flex flex-col bg-white/[0.02] border border-white/5 p-5 rounded-2xl hover:border-amber-500/30 hover:bg-white/[0.04] transition-all duration-500 cursor-pointer overflow-hidden"
-            >
+            <Link 
+  href={`/fragrance/${encodeURIComponent(frag.Name)}`}
+  key={`${frag.Name}-${index}`} 
+  className="group relative flex flex-col bg-white/[0.02] border border-white/5 p-5 rounded-2xl hover:border-amber-500/30 hover:bg-white/[0.04] transition-all duration-500 cursor-pointer overflow-hidden"
+>
               {/* Product Image */}
               {frag['Image URL'] && (
                 <div className="w-full h-48 mb-6 overflow-hidden rounded-xl bg-white/5 flex items-center justify-center p-2 relative">
@@ -67,7 +69,7 @@ export default function ProductGrid({
                   )}
                 </div>
               )}
-            </div>
+            </Link>
           );
         })}
       </div>
